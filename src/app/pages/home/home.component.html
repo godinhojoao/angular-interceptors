@@ -1,0 +1,19 @@
+<h1>GitHub Repositories</h1>
+
+<div *ngIf="loading$ | async">
+  Loading...
+</div>
+
+<ng-template *ngIf="!errorMessage && !(loading$ | async)">
+  <ul>
+    <li *ngFor="let repo of repos">
+      <h3>{{ repo.name }}</h3>
+      <p>{{ repo.full_name }}</p>
+      <p>Private: {{ repo.private ? 'Yes' : 'No' }}</p>
+      <p>Owner: {{ repo.owner.login }}</p>
+    </li>
+  </ul>
+</ng-template>
+
+
+<h2 class="error" *ngIf="errorMessage">{{errorMessage}}</h2>
